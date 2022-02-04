@@ -20,7 +20,7 @@ LIBEXIV2_VERSION="0.27.4"
 ZSTD_VERSION="v1.5.0"
 DLIB_VERSION="19.22"
 HALIDE_BRANCH=https://github.com/mirsadm/Halide
-PFOR_BRANCH=https://github.com/mirsadm/TurboPFor-Integer-Compression.git # To remove -lrt flag for android cross-compilation
+PFOR_BRANCH=https://github.com/teemodk/TurboPFor-Integer-Compression.git # To remove -lrt flag for android cross-compilation
 
 mkdir -p tmp
 pushd tmp
