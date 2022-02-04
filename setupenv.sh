@@ -16,7 +16,7 @@ NUM_CORES="$(python3 -c 'import multiprocessing as mp; print(mp.cpu_count())')"
 ANDROID_ABI="arm64-v8a"
 OPENCV_VERSION="4.5.4"
 LIBEXPAT_VERSION="2.4.1"
-LIBEXIV2_VERSION="0.27.4"
+LIBEXIV2_VERSION="0.27.5"
 ZSTD_VERSION="v1.5.0"
 DLIB_VERSION="19.22"
 HALIDE_BRANCH=https://github.com/mirsadm/Halide
@@ -177,7 +177,7 @@ build_expat() {
 build_exiv2() {
 	LIBEXIV2_ARCHIVE="libexiv2-${LIBEXPAT_VERSION}.tar.gz"	
 
-	curl -L https://www.exiv2.org/builds/exiv2-${LIBEXIV2_VERSION}-Source.tar.gz --output ${LIBEXIV2_ARCHIVE}
+	curl -L https://github.com/Exiv2/exiv2/releases/download/v${LIBEXIV2_VERSION}/exiv2-${LIBEXIV2_VERSION}-Source.tar.gz --output ${LIBEXIV2_ARCHIVE}
 
 	tar -xvf ${LIBEXIV2_ARCHIVE}
 
