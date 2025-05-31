@@ -1,6 +1,10 @@
 #!/bin/bash
 set -euxo pipefail
 
+# sudo apt update && sudo apt install git build-essential libzstd-dev cmake clang-13 llvm-13-dev libclang-13-dev
+# export ANDROID_NDK=/home/user/Android/Sdk/ndk/23.1.7779620
+# export LLVM_DIR=/usr/include/llvm-16/llvm/
+
 if [[ -z "${ANDROID_NDK-}" ]]; then
 	echo -e "Please set ANDROID_NDK to point to the NDK installation path"
 	exit 1
@@ -294,6 +298,8 @@ build_halide() {
 	mkdir -p ${INSTALL_DIR}
 
 	cmake -DTARGET_WEBASSEMBLY=OFF -DWITH_TUTORIALS=OFF -DWITH_TESTS=OFF -DWITH_PYTHON_BINDINGS=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR} ..
+	
+	find ../ -type f -iname "*.make" -exec sed -i 's/-Wno-unused-function/-Wno-unused-function -Wno-unused-but-set-variable/g' {} +
 
 	make -j${NUM_CORES}
 
